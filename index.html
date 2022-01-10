@@ -45,11 +45,11 @@
         this.grupo=grupo;
       }
       // con estas nuevas bariables estamos trayendo el ID de los input, con el .getElementByID trae los ID de HTML a JS
-      var nombreCapturar = document.getElementById("nombre").value;
-      var apellidoCapturar = document.getElementById("apellido").value;
-      var edadCapturar = document.getElementById("edad").value;
-      var domicilioCapturar = document.getElementById("domicilio").value;
-      var grupoCapturar = document.getElementById("grupo").value;
+      let nombreCapturar = document.getElementById("nombre").value;
+      let apellidoCapturar = document.getElementById("apellido").value;
+      let edadCapturar = document.getElementById("edad").value;
+      let domicilioCapturar = document.getElementById("domicilio").value;
+      let grupoCapturar = document.getElementById("grupo").value;
 
       //se crea un objeto
       nuevoSujeto = new Persona(nombreCapturar, apellidoCapturar, edadCapturar, domicilioCapturar, grupoCapturar);
@@ -57,17 +57,18 @@
     }
     
 // esta funcion genera la matricula (ojo aun no sabemos como mostrarlos)
-    function generarMatricula(){
+    function generarMatricula(nombre,apellido,edad,grupo){
   let nom = nombre.slice(0,2).toUpperCase();
   let ape = apellido.slice(0,2).toUpperCase();
   matricula = (nom+ape+edad+grupo);
+  return matricula
 };
 //esta funcion almacena y muestra los datos ingresados por el cliente de JS a HTML
     var baseDatos= [];
     function agregar(){
       baseDatos.push(nuevoSujeto);
       console.log(baseDatos);
-      document.getElementById("tabla").innerHTML += '<tbody><td>'+nuevoSujeto.nombre+'</td><td>'+nuevoSujeto.apellido+'</td><td>'+nuevoSujeto.edad+'</td><td>'+nuevoSujeto.domicilio+'</td><td>'+nuevoSujeto.grupo+'</td><td>'+generarMatricula+'</td></tbody>';
+      document.getElementById("tabla").innerHTML += '<tbody><td>'+nuevoSujeto.nombre+'</td><td>'+nuevoSujeto.apellido+'</td><td>'+nuevoSujeto.edad+'</td><td>'+nuevoSujeto.domicilio+'</td><td>'+nuevoSujeto.grupo+'</td><td>'+generarMatricula(nuevoSujeto.nombre,nuevoSujeto.apellido,nuevoSujeto.edad,nuevoSujeto.grupo)+'</td></tbody>';
     };
   </script>
 
