@@ -29,6 +29,12 @@
             <th>Domicilio</th>
             <th>Grupo</th>
             <th>Matricula</th>
+            <th>Español</th>
+            <th>Matematicas</th>
+            <th>Fisica</th>
+            <th>Ingles</th>
+            <th>Geografia</th>
+            <th>Promedio</th>
           </tr>
         </thead>
         <tbody><td></td><td></td><td></td><td></td><td></td><td></td></tbody>
@@ -63,12 +69,52 @@
   matricula = (nom+ape+edad+grupo);
   return matricula
 };
+
+//5 funciones para cada materia porque no sabemos como optimizar la funcion 100% real no fake
+function califaEspañol(min, max) {
+ max = 10
+ min = 3
+  esp = Math.round(Math.random() * (max - min) + min);
+  return esp
+};
+function califaMatematicas(min, max) {
+ max = 10
+ min = 3
+  mate = Math.round(Math.random() * (max - min) + min);
+  return mate
+};
+function califaFisica(min, max) {
+ max = 10
+ min = 3
+  fisc = Math.round(Math.random() * (max - min) + min);
+  return fisc
+};
+function califaIngles(min, max) {
+ max = 10
+ min = 3
+  ing = Math.round(Math.random() * (max - min) + min);
+  return ing
+};
+function califaGeografia(min, max) {
+ max = 10
+ min = 7
+  geo = Math.round(Math.random() * (max - min) + min);
+  return geo
+};
+
+// funcion para el promedio
+
+function promEdio(){
+  promedio = (califaEspañol() + califaMatematicas() + califaFisica() + califaIngles() + califaGeografia())/5;
+  return promedio
+};
+
 //esta funcion almacena y muestra los datos ingresados por el cliente de JS a HTML
     var baseDatos= [];
     function agregar(){
       baseDatos.push(nuevoSujeto);
       console.log(baseDatos);
-      document.getElementById("tabla").innerHTML += '<tbody><td>'+nuevoSujeto.nombre+'</td><td>'+nuevoSujeto.apellido+'</td><td>'+nuevoSujeto.edad+'</td><td>'+nuevoSujeto.domicilio+'</td><td>'+nuevoSujeto.grupo+'</td><td>'+generarMatricula(nuevoSujeto.nombre,nuevoSujeto.apellido,nuevoSujeto.edad,nuevoSujeto.grupo)+'</td></tbody>';
+      document.getElementById("tabla").innerHTML += '<tbody><td>'+nuevoSujeto.nombre+'</td><td>'+nuevoSujeto.apellido+'</td><td>'+nuevoSujeto.edad+'</td><td>'+nuevoSujeto.domicilio+'</td><td>'+nuevoSujeto.grupo+'</td><td>'+generarMatricula(nuevoSujeto.nombre,nuevoSujeto.apellido,nuevoSujeto.edad,nuevoSujeto.grupo)+'</td><td>'+califaEspañol(nuevoSujeto.min,nuevoSujeto.max)+'</td><td>'+califaMatematicas(nuevoSujeto.min,nuevoSujeto.max)+'</td><td>'+califaFisica(nuevoSujeto.min,nuevoSujeto.max)+'</td><td>'+califaIngles(nuevoSujeto.min,nuevoSujeto.max)+'</td><td>'+califaGeografia(nuevoSujeto.min,nuevoSujeto.max)+'</td><td>'+promEdio()+'</td></tbody>';
     };
   </script>
 
