@@ -28,34 +28,46 @@
             <th>Edad</th>
             <th>Domicilio</th>
             <th>Grupo</th>
+            <th>Matricula</th>
           </tr>
         </thead>
-        <tbody><td></td><td></td><td></td><td></td><td></td></tbody>
+        <tbody><td></td><td></td><td></td><td></td><td></td><td></td></tbody>
       </table>
     </div>
   <script>
+    //esta funcion captura los datos ingresaos en los input
     function capturar(){
-      function Persona(nombre,apellido,edad,domicilio,grupo){
+      function Persona(nombre,apellido,edad,domicilio,grupo,){
         this.nombre=nombre;
         this.apellido=apellido;
         this.edad=edad;
         this.domicilio=domicilio;
         this.grupo=grupo;
       }
+      // con estas nuevas bariables estamos trayendo el ID de los input, con el .getElementByID trae los ID de HTML a JS
       var nombreCapturar = document.getElementById("nombre").value;
       var apellidoCapturar = document.getElementById("apellido").value;
       var edadCapturar = document.getElementById("edad").value;
       var domicilioCapturar = document.getElementById("domicilio").value;
       var grupoCapturar = document.getElementById("grupo").value;
 
+      //se crea un objeto
       nuevoSujeto = new Persona(nombreCapturar, apellidoCapturar, edadCapturar, domicilioCapturar, grupoCapturar);
       agregar();
     }
+    
+// esta funcion genera la matricula (ojo aun no sabemos como mostrarlos)
+    function generarMatricula(){
+  let nom = nombre.slice(0,2).toUpperCase();
+  let ape = apellido.slice(0,2).toUpperCase();
+  matricula = (nom+ape+edad+grupo);
+};
+//esta funcion almacena y muestra los datos ingresados por el cliente de JS a HTML
     var baseDatos= [];
     function agregar(){
       baseDatos.push(nuevoSujeto);
       console.log(baseDatos);
-      document.getElementById("tabla").innerHTML += '<tbody><td>'+nuevoSujeto.nombre+'</td><td>'+nuevoSujeto.apellido+'</td><td>'+nuevoSujeto.edad+'</td><td>'+nuevoSujeto.domicilio+'</td><td>'+nuevoSujeto.grupo+'</td></tbody>';
+      document.getElementById("tabla").innerHTML += '<tbody><td>'+nuevoSujeto.nombre+'</td><td>'+nuevoSujeto.apellido+'</td><td>'+nuevoSujeto.edad+'</td><td>'+nuevoSujeto.domicilio+'</td><td>'+nuevoSujeto.grupo+'</td><td>'+generarMatricula+'</td></tbody>';
     };
   </script>
 
